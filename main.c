@@ -18,6 +18,18 @@ void initializePicture()
         }
     }
 }
+void drawRectangle(int x, int y, int width, int height)
+{
+    int i, j;
+
+    for(i = y; i < y + height; i++)
+    {
+        for(j = x; j < x + width; j++)
+        {
+            picture[i][j] = '*';
+        }
+    }
+}
 
 // Display the canvas
 void displayPicture()
@@ -39,6 +51,7 @@ int main()
     printf("2D Graphics Editor Started!\n\n");
 
     initializePicture();
+    drawRectangle(5, 3, 10, 5);
     displayPicture();
 
     return 0;
