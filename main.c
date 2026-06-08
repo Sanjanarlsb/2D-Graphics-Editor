@@ -30,6 +30,25 @@ void drawRectangle(int x, int y, int width, int height)
         }
     }
 }
+void drawLine(int x1, int y1, int x2, int y2)
+{
+    int i;
+
+    if(y1 == y2)
+    {
+        for(i = x1; i <= x2; i++)
+        {
+            picture[y1][i] = '*';
+        }
+    }
+    else if(x1 == x2)
+    {
+        for(i = y1; i <= y2; i++)
+        {
+            picture[i][x1] = '*';
+        }
+    }
+}
 
 // Display the canvas
 void displayPicture()
@@ -52,6 +71,8 @@ int main()
 
     initializePicture();
     drawRectangle(5, 3, 10, 5);
+    drawLine(0, 0, 20, 0);
+    drawLine(25, 2, 25, 12);
     displayPicture();
 
     return 0;
