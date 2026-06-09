@@ -49,6 +49,48 @@ void drawLine(int x1, int y1, int x2, int y2)
         }
     }
 }
+void drawTriangle(int x, int y, int height)
+{
+    int i, j;
+
+    for(i = 0; i < height; i++)
+    {
+        for(j = x - i; j <= x + i; j++)
+        {
+            picture[y + i][j] = '*';
+        }
+    }
+}
+void drawCircle(int centerX, int centerY, int radius)
+{
+    int x, y;
+
+    for(y = 0; y < HEIGHT; y++)
+    {
+        for(x = 0; x < WIDTH; x++)
+        {
+            int dx = x - centerX;
+            int dy = y - centerY;
+
+            if(dx * dx + dy * dy <= radius * radius)
+            {
+                picture[y][x] = '*';
+            }
+        }
+    }
+}
+void deleteRectangle(int x, int y, int width, int height)
+{
+    int i, j;
+
+    for(i = y; i < y + height; i++)
+    {
+        for(j = x; j < x + width; j++)
+        {
+            picture[i][j] = '_';
+        }
+    }
+}
 
 // Display the canvas
 void displayPicture()
@@ -73,7 +115,13 @@ int main()
     drawRectangle(5, 3, 10, 5);
     drawLine(0, 0, 20, 0);
     drawLine(25, 2, 25, 12);
+    drawTriangle(15, 5, 5);
+
+    drawCircle(30, 10, 4);
+
+    deleteRectangle(7, 4, 3, 2);
     displayPicture();
 
     return 0;
 }
+
